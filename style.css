@@ -25,9 +25,5 @@ body {
 }
 
 .randomizer-button:active {
-    background-color: rgba(0,0,0,10%);
-}
-
-.randomizer-button:hover {
-    background-color: rgba(0,0,0,20%);
+    background-color: rgba(0,0,0,15%);
 }
