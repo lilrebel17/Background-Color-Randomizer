@@ -6,19 +6,26 @@ RandomButton.addEventListener('click', function (){
     for(let i=0; i < 6; i++) {
         HexRandomizer();
     }
-    console.log(BackgroundColor)
+    console.log("Your New Color is " + BackgroundColor)
 })
 
 function HexRandomizer() {
         let RandNum = Math.floor(Math.random() * HexParameters.length)
         let NewVar = HexParameters[RandNum]
         BackgroundColor.push(NewVar)
-        SetBackgroundColor()
+        BackgroundColor.join()
+        console.log(BackgroundColor)
+        // SetBackgroundColor()
 }
 
-function SetBackgroundColor() {
-    let NewColor = BackgroundColor.join()
-    console.log(NewColor)
-    let Background = document.body.style.backgroundColor
-    Background = '#' + BackgroundColor 
-}
+// function SetBackgroundColor() {
+//     let Background = document.body.style.backgroundColor
+//     Background = '#' + BackgroundColor
+//     RemovePreviousColor();
+// }
+
+// function RemovePreviousColor() {
+//     if(BackgroundColor.length < 6) {
+
+//     }
+// }
