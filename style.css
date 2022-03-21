@@ -24,6 +24,10 @@ body {
     font-weight: 400;
 }
 
+.hex::selection {
+    background-color: transparent;
+    color: white;
+}
 .randomizer-button:active {
     background-color: rgba(0,0,0,15%);
 }
