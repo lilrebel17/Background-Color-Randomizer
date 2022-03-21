@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+body {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.randomizer-button {
+    border: 10px double rgba(0,0,0,45%);
+    color: transparent;
+	font-size: 40px;
+	-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgba(0,0,0,45%);
+    background-color: transparent;
+    font-size: 5vw;
+    font-weight: 900;
+}
+
+.hex {
+    color: transparent;
+	font-size: 40px;
+	-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgba(0,0,0,60%);
+    font-size: 15vw;
+    font-weight: 400;
+}
+
+.randomizer-button:active {
+    background-color: rgba(0,0,0,10%);
+}
+
+.randomizer-button:hover {
+    background-color: rgba(0,0,0,20%);
+}
