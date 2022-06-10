@@ -12,10 +12,28 @@
         <meta http-equiv='x-ua-compatible' content='ie=edge'>
     </head>
     <body>
-        <p class='hex'></p>
-        <button class="randomizer-button" name="randomizer-button">
-            Click To Change Color
-        </button>
+        <div id="color-list">
+            <div id="saved-colors" class="closed">
+
+            </div>
+            <button id="drawer-button">
+                >
+            </button>
+        </div>
+        <div id="color-picker">
+            <p class='hex'></p>
+            <div id="buttons">
+                <button class="main-button" id='randomizer-button' name="randomizer-button">
+                    Click To Change Color
+                </button>
+                <button class="main-button" id='save-button' name="save-button">
+                    Save Color
+                </button>
+                <button class="main-button" id="clear-button" name="clear-button">
+                    Clear List
+                </button>
+            </div>
+        </div>
         <!-- Link JS, keep at bottom -->
         <script src='index.js'></script>
     </body>

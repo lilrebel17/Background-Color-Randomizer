@@ -1,26 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
 body {
+    margin: 0px;
+    height: 100vh;
     text-align: center;
     font-family: 'Roboto', sans-serif;
-}
-
-.randomizer-button {
-    border: 10px double rgba(0,0,0,45%);
+    display: flex;
     color: transparent;
-	font-size: 40px;
 	-webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: rgba(0,0,0,45%);
-    background-color: transparent;
-    font-size: 5vw;
-    font-weight: 900;
+    overflow-y: scroll;
 }
 
 .hex {
-    color: transparent;
-	font-size: 40px;
-	-webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: rgba(0,0,0,60%);
-    font-size: 15vw;
+    font-size: 10vw;
     font-weight: 400;
 }
 
@@ -28,6 +20,48 @@ body {
     background-color: transparent;
     color: white;
 }
-.randomizer-button:active {
+
+.main-button {
+    border: 10px double rgba(0,0,0,45%);
+    color: transparent;
+    background-color: transparent;
+    font-size: 5vw;
+    font-weight: 900;
+}
+
+.main-button:active {
     background-color: rgba(0,0,0,15%);
+}
+
+#color-list {
+    width: fit-content;
+    display: flex;
+    margin-left: 0px;
+    text-align: left;
+    transition: all 1s ease-in-out;
+    border-top: 10px double rgba(0,0,0,45%);
+    border-bottom: 10px double rgba(0,0,0,45%);
+    border-right: 10px double rgba(0,0,0,45%);
+}
+
+#drawer-button {
+    transition: all 1s ease-in-out;
+    border: none;
+    border-left: 10px double rgba(0,0,0,45%);
+    color: transparent;
+    background-color: transparent;
+}
+
+#saved-colors {
+    overflow: scroll;
+}   
+
+
+.color::selection {
+    background-color: transparent;
+    color: white;
+}
+
+.color {
+    
 }
