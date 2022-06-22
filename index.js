@@ -8,17 +8,24 @@ const SaveButton = document.querySelector('#save-button')
 const ClearButton = document.querySelector('#clear-button')
 const DrawerButton = document.querySelector('#drawer-button')
 
+//The key all colors are saved in
 const storagekey = 'colors'
 
+//Must create hextext first so the page shows something.
 CreateHexText();
 
 window.onload = () => {
+    //Checks for the storagekey, & closes the menu if its not found
     if(localStorage.getItem(storagekey) == null) {
         console.log('No local storage found..')
         ListStateChange(0)
         return
     }
+    //Just use else here, as your localstorage item is either going to be found. or not found.
     else {
+        //retreives the key, parses it to be used as a regular array
+        //Opens the menu
+        //Loops through the length of the array, and moves all array elements to the hexlist
         let array = JSON.parse(localStorage.getItem(storagekey))
         ListStateChange(1)
         for(let i=0; i < array.length; i++) {
@@ -68,10 +75,16 @@ DrawerButton.addEventListener('click', () => {
 
 
 function CreateHexArray() {
-        let RandNum = Math.floor(Math.random() * HexParameters.length)
-        let NewVar = HexParameters[RandNum]
-        HexArray.push(NewVar)
-        RemovePreviousColor();
+    //Use Math.random() to return a floating number between 0 & 1 
+    //Multiply that number by HexParameters.lenght(the global variable on line 1)
+    //Wrap it in Math.floor so it rounds to the largest inerger. and it wont be a float anymore.
+    let RandNum = Math.floor(Math.random() * HexParameters.length)
+    //Take the random number we got above, and using it to tell the program what element of 
+    //HexParameters it needs to grab.
+    //We then update HexArray(A global )
+    let NewVar = HexParameters[RandNum]
+    HexArray.push(NewVar)
+    RemovePreviousColor();
 }
 
 function RemovePreviousColor() {
