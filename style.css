@@ -11,6 +11,10 @@ body {
     overflow-y: scroll;
 }
 
+.closed {
+    overflow: hidden
+}
+
 .hex {
     font-size: 10vw;
     font-weight: 400;
@@ -52,16 +56,18 @@ body {
     background-color: transparent;
 }
 
-#saved-colors {
-    overflow: scroll;
-}   
-
+.color {
+    padding-top: 15%;
+    padding-bottom: 15%;
+}
 
 .color::selection {
     background-color: transparent;
-    color: white;
+    color: red;
 }
 
-.color {
-    
+#color-list {
+    position: relative;
+    height: 98vh;
+    overflow: none;
 }
