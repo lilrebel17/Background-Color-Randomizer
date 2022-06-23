@@ -11,6 +11,7 @@ const DrawerButton = document.querySelector('#drawer-button')
 //The key all colors are saved in
 const storagekey = 'colors'
 
+
 //Must create hextext first so the page shows something.
 CreateHexText();
 
@@ -49,11 +50,17 @@ SaveButton.addEventListener('click', () => {
 })
 
 ClearButton.addEventListener('click', () => {
+    //Starts at however many elements the list has
+    //if its above 0 it increments down
     for(let i=SaveList.childElementCount; i > 0; i--) {
+        //Set a variable for whatever node the program is currently on
         let color = SaveList.childNodes[i]
+        //Then we just remove the child, and use the variable above
         SaveList.removeChild(color)
+        //Clear local storage
         localStorage.clear()
     }
+    //Finally change the list to closed.
     ListStateChange(0)
 })
 
@@ -81,23 +88,31 @@ function CreateHexArray() {
     let RandNum = Math.floor(Math.random() * HexParameters.length)
     //Take the random number we got above, and using it to tell the program what element of 
     //HexParameters it needs to grab.
-    //We then update HexArray(A global )
     let NewVar = HexParameters[RandNum]
+    //We then update HexArray(A global variable on line 2) with the element from HexArray
     HexArray.push(NewVar)
     RemovePreviousColor();
 }
 
 function RemovePreviousColor() {
+    //Makes sure HexArray has more than 6 elements.
     if(HexArray.length > 6) {
+        //If it does, we start at 0, which is the earliest stored element
+        //And splice it all the way to 6, which will be the end of any hex color
         HexArray.splice(0,6)
     }
 }
 
 function ChangeBackgroundColor() {
+    //Takes Background color which is a global variable,
+    //Sets it as # + HexArray
     BackgroundColor = '#' + HexArray.join('');
+    //Make it Uppercase for ease of use & it looks better on page
     BackgroundColor = BackgroundColor.toUpperCase()
+    //Finally sets the color to BackgroundColor
     document.body.style.backgroundColor = BackgroundColor
     console.log(BackgroundColor)
+    //We then create the hextext.
     CreateHexText();
 }
 
@@ -111,9 +126,13 @@ function MoveHexToList(loadedcolor) {
     let SaveList = document.querySelector('#saved-colors')
     let color = BackgroundColor 
 
+    //This creates a p and a div element to be shown on the list
     const newDiv = document.createElement('div')
     const newP = document.createElement('p')
 
+    //Checks if we passed a variable
+    //If we did it uses that variable instead of the current
+    //Background color.
     if(loadedcolor == null) {
         newP.innerHTML = color
         newP.backgroundColor = color
@@ -125,18 +144,36 @@ function MoveHexToList(loadedcolor) {
         newDiv.style.backgroundColor = loadedcolor;
     }
 
+    //After we decide what the background color & text is suppose to be
+    //We append the p block we created and updated to the div
     newDiv.append(newP)
+    //We add the color class just to make the HTML look nicer.
+    //And to set the padding we use for it in CSS.
     newDiv.classList.add('color')
 
+    //We then set the margin & font size of the p element.
     newP.style.margin = '0px'
     newP.style.fontSize = '4vw'
 
+    //Finally we append the div to the save list to the right side.
     SaveList.append(newDiv)
 }
+
 
 //Send 0 as variable to close 
 //Send 1 as variable to open
 function ListStateChange(state) {
+    /* 
+                Simple state changer
+
+    If you pass 0, the save list goes from open to closed state
+    If you pass 1, the save list goes from closed to open state
+
+    Adds & Removes the open or close class dependent on variable
+    Shows overflow with scroll bar or hides overflow dependent on variable
+    Sets width of the save list to hide it in closed state
+
+    */
     if(state == 0) {
         console.log("Closed..")
         SaveList.classList.add('closed')
@@ -154,14 +191,21 @@ function ListStateChange(state) {
 }
 
 function SaveColorToLocalStorage(color) {
-    if(localStorage.getItem('colors') == null) {
+    //Checks for our storage key
+    if(localStorage.getItem(storagekey) == null) {
+        //Creates it with an array if its not there
         let array = []
+        //pushes current color to it as its first element
         array.push(color)
+        //We stringify the array so we can store it in 1 key as a JSON item
         localStorage.setItem(storagekey, JSON.stringify(array))
     }
     else {
+        //If we find it, we parse the storage item
         let array = JSON.parse(localStorage.getItem(storagekey))
+        //Push the color we pass to it the function into the array
         array.push(color)
+        //Finally set the item, and re-stringify it so we can parse it for later use.
         localStorage.setItem(storagekey,JSON.stringify(array))
     }
 }
